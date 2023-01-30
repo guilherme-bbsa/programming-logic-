@@ -1,5 +1,5 @@
 const bombPosition = [[0, 1], [0, 2], [0, 3], [1, 1], [1, 3], [6, 4], [6, 5], [6, 6]]
-
+/* recebe cordenadas de uma celula e checa se a tal celula e uma bomba ou nao, caso for bomba retorna true caso n for uma bomba retorta false */
 const  isBomb = (x , y) => {
   for(let c of bombPosition){
     if(c[0] === x && c[1] === y){
@@ -8,6 +8,7 @@ const  isBomb = (x , y) => {
   }
   return false
 }
+/* cria uma board apartir de um parametro que define o tamanho que a board tera, e prenche cada celula da board com -1 se for uma bomba, ou 0 se n for bomba*/
 const createBoard = (boardSize) =>{
   let board = []
   for (let i = 0; i < boardSize; i++){
@@ -30,7 +31,7 @@ const printBoard = (board) => {
 }
 
 /*
-retorna um array de codenadas dos vizinhos celula dada
+retorna um array de cordenadas dos vizinhos celula dada
 */
 const getNeighbors = (board, coordinate) => {
   const [x , y] = coordinate
@@ -81,8 +82,10 @@ const populateBoard = (board) => {
     }
     newBoard.push(line)
   }
+  console.log(newBoard)
   return newBoard
 }
+
 const board = createBoard(10)
 const neighborsCount = []
 for(let i = 0; i < board.length; i++) {
@@ -94,25 +97,3 @@ for(let i = 0; i < board.length; i++) {
   neighborsCount.push(line)
 }
 printBoard(populateBoard(board))
-
-  /*
-  0 -1 0 0 0 0 0 0 0 0
-  -1 0 -1 0 0 0 0 0 0 0
-  0 -1 0 0 0 0 0 0 0 -1
-  0 0 0 0 0 0 0 0 0 -1
-  0 0 0 0 0 0 0 0 0 -1
-  0 0 0 0 0 0 0 0 0 0
-  0 0 0 0 0 0 0 0 0 0
-  0 0 0 0 0 0 0 0 0 0
-  0 0 0 0 0 0 0 0 0 0
-  0 0 0 0 0 0 0 0 0 0
-  x = 9
-  y = 9
-  dx = -1
-  dy = -1
-  boar[0].lengh
-  dado uma board para cada elemtento na board se o elemento for uma bomba coloca menos um no local, se o elemento n for uma bomba, retornar o numero de vizinhos que tem bomba
-
-  
-  */
-//console.log(bombCounter(createBoard(4),[0,1]))
